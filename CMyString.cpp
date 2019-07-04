@@ -6,9 +6,28 @@ CMyString::CMyString() :m_pszData(NULL),m_nLength(0)
 {
 }
 
+CMyString::CMyString(const char *param): m_pszData(NULL), m_nLength(0)
+{
+	this->SetString(param);
+}
+
 CMyString::CMyString(const CMyString &rhs) : m_pszData(NULL), m_nLength(0)
 {
 	this->SetString(rhs.GetString());
+}
+
+CMyString::CMyString(CMyString &&rhs) : m_pszData(NULL), m_nLength(0)
+{
+	m_pszData = rhs.m_pszData;
+	m_nLength = rhs.m_nLength;
+
+	rhs.m_pszData = NULL;
+	rhs.m_nLength = 0;
+}
+
+CMyString::operator char*() const
+{
+	return m_pszData;
 }
 
 CMyString& CMyString::operator=(const CMyString &rhs)
