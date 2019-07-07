@@ -3,8 +3,9 @@ class CMyString
 {
 public:
 	CMyString();
-	 CMyString(const char*);
+	explicit CMyString(const char*); //explicit 키워드는 헤더에 선언만 해주면 된다. 정의부분에는 쓰지 않는다.
 	CMyString(const CMyString &rhs);
+	CMyString(CMyString &&rhs);
 
 	~CMyString();
 private:
@@ -12,10 +13,18 @@ private:
 	int m_nLength; //저장된 문자열의 길이
 public:
 	int SetString(const char*);
+	int GetLength() const;
+	int Apeend(const char* pszParam);
 	const char* GetString() const;
 	void Release();
-	CMyString & operator=(const CMyString & rhs);
 	operator char*() const;
+	int operator==(const CMyString &rhs);
+	int operator!=(const CMyString &rhs);
+	char& operator[](int nIndex);
+	char operator[](int nIndex) const;
+	CMyString & operator=(const CMyString & rhs);
+	CMyString operator+(const CMyString &rhs);
+	CMyString& operator+=(const CMyString &rhs);
 };
 
 
