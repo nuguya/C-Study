@@ -6,7 +6,6 @@ public:
 	explicit CMyString(const char*); //explicit 키워드는 헤더에 선언만 해주면 된다. 정의부분에는 쓰지 않는다.
 	CMyString(const CMyString &rhs);
 	CMyString(CMyString &&rhs);
-
 	~CMyString();
 private:
 	char* m_pszData; //문자열을 저장하기 위해 동적 할당한 메모리를 가리키는 포인터
