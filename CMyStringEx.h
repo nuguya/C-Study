@@ -5,11 +5,10 @@ class CMyStringEx :
 {
 public:
 	CMyStringEx();
-	CMyStringEx(const char* nParam);
 	~CMyStringEx();
 	using CMyString::CMyString;
 public:
 	int Find(const char* pszParam);
-	int SetString(const char* pszParam);
+	void OnSetString(char *, int);
 };
 

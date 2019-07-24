@@ -16,6 +16,7 @@ public:
 	int Apeend(const char* pszParam);
 	const char* GetString() const;
 	void Release();
+	virtual void OnSetString(char*, int);
 	operator char*() const;
 	int operator==(const CMyString &rhs);
 	int operator!=(const CMyString &rhs);

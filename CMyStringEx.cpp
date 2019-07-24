@@ -2,13 +2,10 @@
 #include "CMyStringEx.h"
 
 
-CMyStringEx::CMyStringEx()
+CMyStringEx::CMyStringEx():CMyString()
 {
 }
 
-CMyStringEx::CMyStringEx(const char * nParam) :CMyString(nParam)
-{
-}
 
 
 CMyStringEx::~CMyStringEx()
@@ -27,15 +24,10 @@ int CMyStringEx::Find(const char * pszParam)
 	return -1;
 }
 
-int CMyStringEx::SetString(const char * pszParam)
-{
-	int nResult;
 
-	if (strcmp(pszParam, "°³»õ³¢") == 0) {
-		nResult = CMyString::SetString("ÂøÇÑ »ç¶÷");
-	}
-	else
-		nResult=CMyString::SetString(pszParam);
-	return nResult;
+void CMyStringEx::OnSetString(char *pszData, int nLength)
+{
+	if (strcmp(pszData, "¸Û¸ÛÀÌ¾Æµé") == 0)
+		strcpy_s(pszData, sizeof(char)*(nLength + 1), "*ÂøÇÑ¾Æµé*");
 }
 

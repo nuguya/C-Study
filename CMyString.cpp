@@ -105,13 +105,17 @@ int CMyString::SetString(const char* pszParam)
 	if (pszParam == NULL) {
 		return 0;
 	}
-	m_nLength=strlen(pszParam);
-	if (m_nLength == 0) {
+	int nLength = strlen(pszParam);
+	if (nLength == 0) {
 		return 0;
 	}
-	CMyString::m_pszData = new char[m_nLength+1];
-	strcpy_s(m_pszData,sizeof(char)*(m_nLength+1),pszParam);
-	return m_nLength;
+	m_pszData = new char[nLength+1];
+	strcpy_s(m_pszData,sizeof(char)*(nLength+1),pszParam);
+	m_nLength = nLength;
+
+	OnSetString(m_pszData, m_nLength);
+
+	return nLength;
 }
 
 
@@ -162,4 +166,9 @@ void CMyString::Release()
 		delete[] m_pszData;
 	m_pszData = NULL;
 	m_nLength = 0;
+}
+
+void CMyString::OnSetString(char *pszData, int nLength)
+{
+
 }
